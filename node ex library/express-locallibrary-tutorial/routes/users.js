@@ -11,7 +11,4 @@ router.get('/cool', function(req, res, next) {
 });
 
 
-
-
-
 module.exports = router;
