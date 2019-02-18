@@ -7,6 +7,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
+var invoicesRouter = require('./routes/invoices'); //New module
+var testsRouter = require('./routes/tests'); //New module
 var compression = require('compression');
 var helmet = require('helmet');
 
@@ -38,6 +40,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/catalog', catalogRouter);  // Add catalog routes to middleware chain.
+app.use('/invoices', invoicesRouter); //New module for invoices
+app.use('/tests', testsRouter); //For tests
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
