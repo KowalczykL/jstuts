@@ -15,31 +15,30 @@ html(lang='en')
           block sidebar
             ul(class='sidebar-nav')
               li 
-                a(href='/catalog') Home
+                a(href='/invoices') Home
               li 
-                a(href='/catalog/books') All books
+                a(href='/invoices/invoice') All inv
               li 
-                a(href='/catalog/authors') All authors
+                a(href='/invoices/supplier') All suppl
               li 
-                a(href='/catalog/genres') All genres
+                a(href='/invoices/item') All items
               li 
-                a(href='/catalog/bookinstances') All book-instances
+                a(href='/invoices/user') All users
               li 
-                hr
+                hr              
               li 
-                a(href='/catalog/author/create') Create new author
+                a(href='/invoices') Create inv
               li 
-                a(href='/catalog/genre/create') Create new genre
+                a(href='/invoices') Create suppl
               li 
-                a(href='/catalog/book/create') Create new book
+                a(href='/invoices/item/create') Create item
               li 
-                a(href='/catalog/bookinstance/create') Create new book instance (copy)
-              hr
-              li 
-                a(href='/invoices') Nowy moduł faktur
-              hr
-              li 
-                a(href='/tests') Test modules                
+                a(href='/invoices') Create users            
+              
+              
+              
+              
+              
                                
         div(class='col-sm-10')
           block content

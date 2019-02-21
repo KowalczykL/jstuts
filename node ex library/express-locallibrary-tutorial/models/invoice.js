@@ -19,7 +19,7 @@ var InvoiceSchema = new Schema(
 InvoiceSchema
 .virtual('url')
 .get(function () {
-  return '/catalog/invoice/' + this._id;
+  return '/invoices/invoice/' + this._id;
 });
 
 

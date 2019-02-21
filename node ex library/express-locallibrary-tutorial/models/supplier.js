@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 var SupplierSchema = new Schema(
   {
-    supplier_name: {type: String, required: true, max: 100},
+    name: {type: String, required: true, max: 100},
 
   }
 );
@@ -14,7 +14,7 @@ var SupplierSchema = new Schema(
 SupplierSchema
 .virtual('url')
 .get(function () {
-  return '/catalog/supplier/' + this._id;
+  return '/invoices/supplier/' + this._id;
 });
 
 

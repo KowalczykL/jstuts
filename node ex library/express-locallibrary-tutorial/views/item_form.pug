@@ -1,0 +1,15 @@
+extends invoices_layout
+
+block content
+  h1 #{title}
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') Item:
+      input#name.form-control(type='text', placeholder='Prąd, Woda itp.' name='name' value=(undefined===item ? '' : item.name))
+    button.btn.btn-primary(type='submit') Wyślij
+
+  if errors 
+   ul
+    for error in errors
+     li!= error.msg

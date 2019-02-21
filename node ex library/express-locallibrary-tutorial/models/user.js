@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 var UserSchema = new Schema(
   {
-    user_name: {type: String, required: true, max: 100},
+    name: {type: String, required: true, max: 100},
 
   }
 );
@@ -14,7 +14,7 @@ var UserSchema = new Schema(
 UserSchema
 .virtual('url')
 .get(function () {
-  return '/catalog/user/' + this._id;
+  return '/invoices/user/' + this._id;
 });
 
 

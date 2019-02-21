@@ -1,0 +1,15 @@
+extends invoices_layout
+
+block content
+  h1= title
+  
+  ul
+    each invoice in invoice_list
+      li 
+        a(href=invoice.url) #{invoice.id} 
+        |  #{invoice.supplier.name} 
+        | #{invoice.item.name} 
+        | #{invoice.value} 
+
+    else
+      li There are no genres.

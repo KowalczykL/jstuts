@@ -1,0 +1,29 @@
+extends invoices_layout
+
+block content
+  h1 #{title}: #{invoice.supplier.name}
+  
+  p #[strong Supplier:] 
+    a(href=invoice.supplier.url) #{invoice.supplier.name}
+ 
+    
+  
+  
+  
+  
+  p #[strong Payable to:] #{invoice.payable_to}
+  
+  p #[strong Is paid:] #{invoice.is_paid}
+  
+  p #[strong Who paid:] #{invoice.who_paid.name} 
+
+  p #[strong Item:] 
+    a(href=invoice.item.url) #{invoice.item.name}
+   
+  p #[strong Value:] #{invoice.value}
+
+
+
+
+
+

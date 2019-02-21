@@ -1,0 +1,18 @@
+extends invoices_layout
+
+block content
+
+  h1 Item: #{item.name}
+  
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Invoices
+    
+    dl
+      each book in item_invoices
+        dt 
+          a(href=invoice.url) #{invoice.supplier}
+        dd #{invoice.value}
+
+      else
+        p This genre has no books
