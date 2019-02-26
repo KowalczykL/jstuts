@@ -5,11 +5,11 @@ var Schema = mongoose.Schema;
 
 var InvoiceSchema = new Schema(
   {
-	  supplier: { type: Schema.Types.ObjectId, ref: 'Supplier', required: true },
+	  supplier: { type: Schema.Types.ObjectId, ref: 'Supplier'},
 	  payable_to: {type: Date},
 	  is_paid: {type: Boolean},
-	  who_paid: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-	  item: { type: Schema.Types.ObjectId, ref: 'Item', required: true },
+	  who_paid: { type: Schema.Types.ObjectId, ref: 'User'},
+	  item: { type: Schema.Types.ObjectId, ref: 'Item'},
 	  value: {type: Number, required: true}
 	  
   }

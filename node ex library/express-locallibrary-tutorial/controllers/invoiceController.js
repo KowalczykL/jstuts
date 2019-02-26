@@ -12,7 +12,16 @@ var Users = require('../models/user');
 
 var async = require('async');
 
-// Handle book delete on POST.
+
+exports.invoice_create_get = function(req, res) {
+	res.send("invoice_create_get");
+};	
+
+//exports.invoice_create_post = function(req, res) {
+//	res.send("invoice_create_post");
+//};	
+
+
 exports.index = function(req, res) {   
     
     async.parallel({
@@ -30,7 +39,7 @@ exports.index = function(req, res) {
         },
         
     }, function(err, results) {
-        res.render('invoice_index', { title: 'Local Library Home', error: err, data: results });
+        res.render('invoice_index', { title: 'Invoice module Home', error: err, data: results });
     });
 };
 
@@ -66,12 +75,6 @@ exports.invoice_detail = function(req, res, next) {
 };
 
 
-
-
-
-
-
-// Handle book delete on POST.
 exports.invoice_list = function(req, res, next) {
 	
 	Invoice.find()
@@ -81,6 +84,7 @@ exports.invoice_list = function(req, res, next) {
     .exec(function (err, list_invoices) {	
       if (err) { return next(err); }
         //Successful, so render
+        console.log(list_invoices);
 	      res.render('invoice_list', { title: 'Invoice List', invoice_list: list_invoices });
     });
 };

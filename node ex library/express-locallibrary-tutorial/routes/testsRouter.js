@@ -7,18 +7,16 @@ var test_controller = require('../controllers/testController');
 
 
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('index');
-});
+/* GET listing. */
+
+
+router.get('/', test_controller.index);
 
 router.get('/tests', function(req, res, next) {
   res.send('/tests');
 });
 
-router.get('/cookie', function(req, res, next) {
-  res.send('/cookie');
-});
+router.get('/cookie', test_controller.cookie);
 
 
 

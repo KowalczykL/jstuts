@@ -7,9 +7,13 @@ block content
     each invoice in invoice_list
       li 
         a(href=invoice.url) #{invoice.id} 
-        |  #{invoice.supplier.name} 
+        | #{invoice.supplier.name} 
+        | #{invoice.payable_to}
+        | #{invoice.is_paid}
+        
         | #{invoice.item.name} 
         | #{invoice.value} 
-
+        <br>
+        <br>
     else
       li There are no genres.
