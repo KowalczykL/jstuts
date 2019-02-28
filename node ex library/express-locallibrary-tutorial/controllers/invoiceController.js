@@ -7,14 +7,30 @@ var Genre = require('../models/genre');
 var BookInstance = require('../models/bookinstance');
 var Invoice = require('../models/invoice');
 var Supplier = require('../models/supplier');
-var Items = require('../models/item');
-var Users = require('../models/user');
+var Item = require('../models/item');
+var User = require('../models/user');
 
 var async = require('async');
 
 
-exports.invoice_create_get = function(req, res) {
-	res.send("invoice_create_get");
+exports.invoice_create_get = function(req, res, next) { 
+      
+    // Get all authors and genres, which we can use for adding to our book.
+    async.parallel({
+        suppliers: function(callback) {
+            Supplier.find(callback);
+        },
+        items: function(callback) {
+            Item.find(callback);
+        },
+        users: function(callback) {
+            User.find(callback);
+        },
+    }, function(err, results) {
+        if (err) { return next(err); }
+        res.render('invoice_form', { title: 'Create Invoice', suppliers: results.suppliers, items: results.items, users: results.users });
+    });
+    
 };	
 
 //exports.invoice_create_post = function(req, res) {
@@ -32,10 +48,10 @@ exports.index = function(req, res) {
             Supplier.countDocuments({}, callback);
         },
         items_count: function(callback) {
-            Items.countDocuments({}, callback);
+            Item.countDocuments({}, callback);
         },
         users_count: function(callback) {
-            Users.countDocuments({}, callback);
+            User.countDocuments({}, callback);
         },
         
     }, function(err, results) {
