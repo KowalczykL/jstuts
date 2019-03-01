@@ -7,7 +7,7 @@ var InvoiceSchema = new Schema(
   {
 	  supplier: { type: Schema.Types.ObjectId, ref: 'Supplier'},
 	  payable_to: {type: Date},
-	  is_paid: {type: Boolean},
+	  is_paid: {type: Boolean, default: false},
 	  who_paid: { type: Schema.Types.ObjectId, ref: 'User'},
 	  item: { type: Schema.Types.ObjectId, ref: 'Item'},
 	  value: {type: Number, required: true}

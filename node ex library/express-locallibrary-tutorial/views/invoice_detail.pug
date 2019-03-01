@@ -15,7 +15,14 @@ block content
   
   p #[strong Is paid:] #{invoice.is_paid}
   
-  p #[strong Who paid:] #{invoice.who_paid.name} 
+  p #[strong Who paid:]
+    if (invoice.who_paid)
+      #{invoice.who_paid}
+    else 
+    |    Unpaid
+      
+
+
 
   p #[strong Item:] 
     a(href=invoice.item.url) #{invoice.item.name}

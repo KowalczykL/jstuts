@@ -15,7 +15,7 @@ var user_controller = require('../controllers/userController');
 
 router.get('/invoice/create', invoice_controller.invoice_create_get);
 // uncomment after method creation
-//router.post('/invoice/create', invoice_controller.invoice_create_post);
+router.post('/invoice/create', invoice_controller.invoice_create_post);
 
 
 

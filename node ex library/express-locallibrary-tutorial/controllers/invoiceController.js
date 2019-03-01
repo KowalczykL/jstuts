@@ -33,9 +33,67 @@ exports.invoice_create_get = function(req, res, next) {
     
 };	
 
-//exports.invoice_create_post = function(req, res) {
-//	res.send("invoice_create_post");
-//};	
+exports.invoice_create_post = [	
+
+    // Validate fields.
+    body('supplier', 'Supplier must not be empty.').isLength({ min: 1 }).trim(),
+    body('payable_to', 'Payable to must not be empty.').isLength({ min: 1 }).trim(),
+    body('item', 'Item must not be empty.').isLength({ min: 1 }).trim(),
+    //body('user', 'User must not be empty').isLength({ min: 1 }).trim(),
+
+    // Sanitize fields (using wildcard).
+    sanitizeBody('*').trim().escape(),
+
+    // Process request after validation and sanitization.
+    (req, res, next) => {
+        
+        // Extract the validation errors from a request.
+        const errors = validationResult(req);
+
+        // Create an object with escaped and trimmed data.
+        var invoice = new Invoice(
+          { supplier: req.body.supplier,
+            payable_to: req.body.payable_to,
+            item: req.body.item,
+            value: req.body.value
+           });
+
+        if (!errors.isEmpty()) {
+            // There are errors. Render form again with sanitized values/error messages.
+
+            // Get all authors and genres for form.
+    async.parallel({
+        suppliers: function(callback) {
+            Supplier.find(callback);
+        },
+        items: function(callback) {
+            Item.find(callback);
+        },
+        users: function(callback) {
+            User.find(callback);
+        },
+    }, function(err, results) {
+        if (err) { return next(err); }
+        res.render('invoice_form', { title: 'Create Invoice', suppliers: results.suppliers, items: results.items, users: results.users, invoice: invoice, errors: errors.array() });
+            });
+            return;
+        }
+        else {
+            // Data from form is valid. Save invoice.
+            invoice.save(function (err) {
+                if (err) { return next(err); }
+                   //successful - redirect to new book record.
+                   res.redirect(invoice.url);
+                });
+        }
+    }
+];
+
+
+
+
+
+
 
 
 exports.index = function(req, res) {   
