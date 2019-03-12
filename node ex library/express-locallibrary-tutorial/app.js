@@ -12,6 +12,8 @@ var testsRouter = require('./routes/testsRouter'); //New module
 var compression = require('compression');
 var helmet = require('helmet');
 
+global.appRoot = path.resolve(__dirname);
+
 // Create the Express application object
 var app = express();
 
@@ -36,6 +38,8 @@ app.use(cookieParser());
 app.use(compression()); //Compress all routes
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
