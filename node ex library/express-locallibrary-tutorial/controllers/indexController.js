@@ -11,13 +11,13 @@ var path = require('path');
 //var Item = require('../models/item');
 //var User = require('../models/user');
 
-var async = require('async');
+//var async = require('async');
 
 
 exports.index = function(req, res) {
 console.log(req);
 console.log(path.join(global.appRoot, "public//index.html"));
   //res.render("index");
-  res.render(path.join(global.appRoot, "public//index.html"));
+  res.sendFile(path.join(global.appPublic, "html/index.html"));
   console.log(path.join(global.appRoot, "public//index.html"));
 };

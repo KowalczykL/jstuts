@@ -13,6 +13,7 @@ var compression = require('compression');
 var helmet = require('helmet');
 
 global.appRoot = path.resolve(__dirname);
+global.appPublic = path.resolve(__dirname + "/public");
 
 // Create the Express application object
 var app = express();
