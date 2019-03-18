@@ -90,6 +90,55 @@ exports.invoice_create_post = [
 ];
 
 
+exports.invoice_delete_get = function(req, res, next) {
+
+    async.parallel({
+        invoice: function(callback) {
+
+            Invoice.findById(req.params.id)
+              .populate('supplier')
+              .populate('who_paid')
+              .populate('item')                           
+              .exec(callback);
+        },
+        //book_instance: function(callback) {
+//
+        //  BookInstance.find({ 'book': req.params.id })
+        //  .exec(callback);
+        //},
+    }, function(err, results) {
+        if (err) { return next(err); }
+        if (results.invoice==null) { // No results.
+            var err = new Error('Book not found');
+            err.status = 404;
+            return next(err);
+        }
+        // Successful, so render.
+        //console.log('test console'+results.invoice.who_paid);
+        res.render('invoice_delete', { title: 'Delete Invoice', invoice: results.invoice } );
+    });
+
+};
+
+
+exports.invoice_delete_post = function(req, res, next) {
+
+            // Author has no books. Delete object and redirect to the list of authors.
+            Invoice.findByIdAndDelete(req.body.invoiceid, function deleteInvoice(err) {
+                if (err) { return next(err); }
+                // Success - go to author list
+                res.redirect('/invoices/invoice')
+            })
+    
+    
+};
+
+
+
+
+
+
+
 
 
 
@@ -142,7 +191,7 @@ exports.invoice_detail = function(req, res, next) {
             return next(err);
         }
         // Successful, so render.
-        console.log('test console'+results.invoice.who_paid);
+        //console.log('test console'+results.invoice.who_paid);
         res.render('invoice_detail', { title: 'Invoice', invoice: results.invoice } );
     });
 
@@ -150,15 +199,15 @@ exports.invoice_detail = function(req, res, next) {
 
 
 exports.invoice_list = function(req, res, next) {
-	
-	Invoice.find()
+	console.log(req.query.is_paid);
+	Invoice.find({ 'is_paid': req.query.is_paid, 'is_paid': req.query.is_paid2 })
 	.populate('item')
 	.populate('supplier')
 	.sort([['item', 'ascending']])
     .exec(function (err, list_invoices) {	
       if (err) { return next(err); }
         //Successful, so render
-        console.log(list_invoices);
+        //console.log(list_invoices);
 	      res.render('invoice_list', { title: 'Invoice List', invoice_list: list_invoices });
     });
 };

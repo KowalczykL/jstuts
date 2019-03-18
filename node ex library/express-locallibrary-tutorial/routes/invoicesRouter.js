@@ -17,7 +17,11 @@ router.get('/invoice/create', invoice_controller.invoice_create_get);
 // uncomment after method creation
 router.post('/invoice/create', invoice_controller.invoice_create_post);
 
+// GET request to delete Book.
+router.get('/invoice/:id/delete', invoice_controller.invoice_delete_get);
 
+// POST request to delete Book.
+router.post('/invoice/:id/delete', invoice_controller.invoice_delete_post);
 
 router.get('/invoice/:id', invoice_controller.invoice_detail);
 

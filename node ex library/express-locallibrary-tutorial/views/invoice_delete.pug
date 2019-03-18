@@ -33,13 +33,12 @@ block content
     a(href=invoice.item.url) #{invoice.item.name}
    
   p #[strong Value:] #{invoice.value}
-  hr
-  p
-    a(href=invoice.url+'/delete') Delete inv
 
+  
+    p Do you really want to delete this Inv?
+    
+    form(method='POST' action='')
+      div.form-group
+        input#invoiceid.form-control(type='hidden',name='invoiceid', required='true', value=invoice._id )
 
-
-
-
-
-
+      button.btn.btn-primary(type='submit') Delete

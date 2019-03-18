@@ -15,9 +15,9 @@ var path = require('path');
 
 
 exports.index = function(req, res) {
-console.log(req);
-console.log(path.join(global.appRoot, "public//index.html"));
+//console.log(req);
+//console.log(path.join(global.appRoot, "public//index.html"));
   //res.render("index");
   res.sendFile(path.join(global.appPublic, "html/index.html"));
-  console.log(path.join(global.appRoot, "public//index.html"));
+  //console.log(path.join(global.appRoot, "public//index.html"));
 };
