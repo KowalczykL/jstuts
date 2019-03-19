@@ -199,8 +199,8 @@ exports.invoice_detail = function(req, res, next) {
 
 
 exports.invoice_list = function(req, res, next) {
-	console.log(req.query.is_paid);
-	Invoice.find({ 'is_paid': req.query.is_paid, 'is_paid': req.query.is_paid2 })
+	//console.log(req.query.is_paid);
+	Invoice.find()
 	.populate('item')
 	.populate('supplier')
 	.sort([['item', 'ascending']])
@@ -214,6 +214,10 @@ exports.invoice_list = function(req, res, next) {
 
 
 
+exports.invoice_pay_get = function(req, res) {
+    res.send('NOT IMPLEMENTED: invoice_pay_get');
+};
 
-
-
+exports.invoice_pay_post = function(req, res) {
+    res.send('NOT IMPLEMENTED: invoice_pay_post');
+};

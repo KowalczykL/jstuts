@@ -23,6 +23,13 @@ router.get('/invoice/:id/delete', invoice_controller.invoice_delete_get);
 // POST request to delete Book.
 router.post('/invoice/:id/delete', invoice_controller.invoice_delete_post);
 
+
+router.get('/invoice/:id/pay', invoice_controller.invoice_pay_get);
+
+
+router.post('/invoice/:id/pay', invoice_controller.invoice_pay_post);
+
+
 router.get('/invoice/:id', invoice_controller.invoice_detail);
 
 router.get('/', invoice_controller.index);
