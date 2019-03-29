@@ -8,37 +8,13 @@ var router = express.Router();
 //var book_instance_controller = require('../controllers/bookinstanceController');
 //var invoice_controller = require('../controllers/invoiceController');
 //var task_controller = require('../controllers/taskController');
+var todoList_controller = require('../controllers/todoListController');
 
-/// INVOICE ROUTES ///
+router.get('/tasks', todoList_controller.task_list_get);
+router.post('/tasks', todoList_controller.task_create_post);
 
-// GET INVOICE home page.
-//router.get('/invoice', invoice_controller.index);
-
-// GET request for one Book.
-//router.get('/invoice/:id', invoice_controller.invoice_detail);
-
-
-//router.get('/', invoice_controller.index);
-
-//router.get('/invoice', invoice_controller.invoice_list);
-
-//router.get('/invoice/unpayed', function(req, res, next) {
-//  res.send('/invoice/unpayed');
-//});
-
-/// ITEM ROUTES ///
-// Items section  --  item_controller.item_...
-
-
-// GET request for one Genre.
-//router.get('/item/:id', item_controller.item_detail);
-
-//router.get('/item', item_controller.item_list);
-
-//router.get('/item/create', item_controller.item_create_get);
-
-//router.post('/item/create', item_controller.item_create_post);
-
-
+router.get('/tasks/:taskId', todoList_controller.task_read_get);
+router.put('/tasks/:taskId', todoList_controller.task_update_put);
+router.delete('/tasks/:taskId', todoList_controller.task_delete_delete);
 
 module.exports = router;
