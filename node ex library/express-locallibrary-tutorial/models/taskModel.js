@@ -12,12 +12,7 @@ var TaskSchema = new Schema(
   }
 );
 
-// Virtual for invoice's URL
-InvoiceSchema
-.virtual('url')
-.get(function () {
-  return '/tasks/task/' + this._id;
-});
+
 
 
 

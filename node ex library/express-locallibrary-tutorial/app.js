@@ -10,6 +10,8 @@ var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" 
 var invoicesRouter = require('./routes/invoicesRouter'); //New module
 var testsRouter = require('./routes/testsRouter'); //New module
 var tasksRouter = require('./routes/tasksRouter'); //New module
+var createRouter = require('./routes/createRouter');
+
 var compression = require('compression');
 var helmet = require('helmet');
 
@@ -49,6 +51,7 @@ app.use('/catalog', catalogRouter);  // Add catalog routes to middleware chain.
 app.use('/invoices', invoicesRouter); //New module for invoices, i need this name pattern
 app.use('/tests', testsRouter); //For tests
 app.use('/tasks', tasksRouter); //For tasks module
+app.use('/create', createRouter); //For easy db populating
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
