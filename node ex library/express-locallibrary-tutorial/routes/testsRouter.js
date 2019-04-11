@@ -4,7 +4,7 @@ var router = express.Router();
 
 
 var test_controller = require('../controllers/testController');
-
+var ptpireeController = require('../controllers/ptpireeController');
 
 
 /* GET listing. */
@@ -18,7 +18,7 @@ router.get('/tests', function(req, res, next) {
 
 router.get('/cookie', test_controller.cookie);
 
-
+router.get('/ptpiree', ptpireeController.csv_to_conslog);
 
 
 
